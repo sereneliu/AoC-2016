@@ -16,7 +16,7 @@ def blocks_away(coordinates, direct_facing, directions):
             facing = r[facing]
         else:
             facing = l[facing]
-        blocks = int(direction[1])
+        blocks = int(direction[1:])
         if facing == 'n':
             y += blocks
         elif facing == 's':

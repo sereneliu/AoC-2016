@@ -57,10 +57,6 @@ def bathroom_code_2(some_input):
                 (a, b) = directions[direction](x, y)
                 if actual_keypad[b][a] != ' ':
                     (x, y) = (a, b)
-                else:
-                    (x, y) = (x, y)
-            else:
-                (x, y) = (x, y)
             if i == len(line) - 1:
                 code.append(actual_keypad[y][x])
     return ''.join(code)

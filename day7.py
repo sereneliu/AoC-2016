@@ -19,7 +19,7 @@ def supports_TLS(IP):
                     return True
         else:
             for i in xrange(0, len(seq) - 4):
-                if seq[i:i+4][0:2] == seq[i:i+4][2:][::-1]  and seq[i:i+4][0] != seq[i:i+4][1]:
+                if seq[i:i+2] == seq[i+2:i+4][::-1] and seq[i] != seq[i+1]:
                     if IP[IP.index(seq) - 1] == '[':
                         return False
                     else:
@@ -32,9 +32,9 @@ def count_IPs(IP_list):
             IPs += 1
     return IPs
 
-# print supports_TLS(example_1)
-# print supports_TLS(example_2)
-# print supports_TLS(example_3)
-# print supports_TLS(example_4)
+print supports_TLS(example_1)
+print supports_TLS(example_2)
+print supports_TLS(example_3)
+print supports_TLS(example_4)
 
 print count_IPs(puzzle_input)

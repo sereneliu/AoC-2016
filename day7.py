@@ -8,18 +8,22 @@ example_2 = 'abcd[bddb]xyyx' # does not support TLS (bddb is within square brack
 example_3 = 'aaaa[qwer]tyui' # does not support TLS (aaaa is invalid; the interior characters must be different)
 example_4 = 'ioxxoj[asdfgh]zxcvbn' # supports TLS (oxxo is outside square brackets, even though it's within a larger string)
 
+def contains_ABBA(seq):
+    if seq[0:2] == seq[2:][::-1]  and seq[0] != seq[1]:
+        return True
+
 def supports_TLS(IP):
     split_IP = re.split('\[|\]', IP)
     for seq in split_IP:
         if len(seq) == 4:
-            if seq[0:2] == seq[2:][::-1]  and seq[0] != seq[1]:
+            if contains_ABBA(seq) == True:
                 if IP[IP.index(seq) - 1] == '[':
                     return False
                 else:
                     return True
         else:
             for i in xrange(0, len(seq) - 4):
-                if seq[i:i+2] == seq[i+2:i+4][::-1] and seq[i] != seq[i+1]:
+                if contains_ABBA(seq[i:i+4]) == True:
                     if IP[IP.index(seq) - 1] == '[':
                         return False
                     else:

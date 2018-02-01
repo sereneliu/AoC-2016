@@ -12,7 +12,7 @@ def most_freq_letter(error_message):
             else:
                 alpha_dict[message[pos]] += 1
         for k, v in alpha_dict.items():
-            if v == max(alpha_dict.values()):
+            if v == min(alpha_dict.values()):
                 correct_message.append(k)
         pos += 1
     return ''.join(correct_message)

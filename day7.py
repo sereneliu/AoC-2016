@@ -54,7 +54,7 @@ def supports_ssl(ip):
     hypernet, supernet = split_ip(ip)
     aba_set = {aba[0:2] for s in supernet for aba in contains_aba(s)}
     bab_set = {bab[1::-1] for h in hypernet for bab in contains_aba(h)}
-    if aba_set.intersection(bab_set):
+    if not aba_set.isdisjoint(bab_set):
         return True
     return False
 

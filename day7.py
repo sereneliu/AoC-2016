@@ -28,6 +28,7 @@ def supports_TLS(IP):
     for o in outside_seq:
         if contains_ABBA(o):
             return True
+    return False
 
 def count_IPs(IP_list):
     IPs = 0

@@ -20,7 +20,7 @@ def split_ip(ip):
     return hypernet_seq, supernet_seq
 
 def contains_abba(seq):
-    for i in xrange(0, len(seq) - 3):
+    for i in range(0, len(seq) - 3):
         if seq[i:i+2] == seq[i+3:i+1:-1] and seq[i] != seq[i+1]:
             return True
     return False
@@ -40,7 +40,7 @@ def supports_tls(ip):
 
 def contains_aba(seq):
     aba = []
-    for i in xrange(0, len(seq) - 2):
+    for i in range(0, len(seq) - 2):
         if seq[i] == seq[i+2] and seq[i] != seq[i+1]:
             aba.append(seq[i:i+3])
     return aba
@@ -52,12 +52,10 @@ example_8 = 'zazbz[bzb]cdb' # supports SSL (zaz has no corresponding aza, but zb
 
 def supports_ssl(ip):
     hypernet, supernet = split_ip(ip)
-    for s in supernet:
-        for h in hypernet:
-            for aba in contains_aba(s):
-                for bab in contains_aba(h):
-                    if aba[0:2] == bab[0:2][::-1]:
-                        return True
+    aba_set = {aba[0:2] for s in supernet for aba in contains_aba(s)}
+    bab_set = {bab[1::-1] for h in hypernet for bab in contains_aba(h)}
+    if aba_set.intersection(bab_set):
+        return True
     return False
 
 # print supports_ssl(example_5)

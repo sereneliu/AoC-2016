@@ -24,11 +24,10 @@ def supports_TLS(IP):
             outside_seq.append(seq)
     for h in hypernet_seq:
         if contains_ABBA(h) == True:
-                return False
-        else:
-            for o in outside_seq:
-                if contains_ABBA(o) == True:
-                    return True
+            return False
+    for o in outside_seq:
+        if contains_ABBA(o) == True:
+            return True
 
 def count_IPs(IP_list):
     IPs = 0

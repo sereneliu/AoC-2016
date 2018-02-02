@@ -23,22 +23,22 @@ def supports_TLS(IP):
         else:
             outside_seq.append(seq)
     for h in hypernet_seq:
-        if contains_ABBA(h) == True:
+        if contains_ABBA(h):
             return False
     for o in outside_seq:
-        if contains_ABBA(o) == True:
+        if contains_ABBA(o):
             return True
 
 def count_IPs(IP_list):
     IPs = 0
     for IP in IP_list:
-        if supports_TLS(IP) == True:
+        if supports_TLS(IP):
             IPs += 1
     return IPs
 
-print supports_TLS(example_1)
-print supports_TLS(example_2)
-print supports_TLS(example_3)
-print supports_TLS(example_4)
+# print supports_TLS(example_1)
+# print supports_TLS(example_2)
+# print supports_TLS(example_3)
+# print supports_TLS(example_4)
 
 print count_IPs(puzzle_input)

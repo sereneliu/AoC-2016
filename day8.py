@@ -13,7 +13,7 @@ def read_instructions(instructions, width, height):
     screen = make_screen(width, height)
     for instruction in instructions:
         if instruction[0] == 'rect':
-            x = int(instruction[1][instruction[1].index('x') - 1])
+            x = int(instruction[1][:instruction[1].index('x')])
             y = int(instruction[1][instruction[1].index('x') + 1])
             for i in range(y):
                 for j in range(x):

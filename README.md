@@ -9,3 +9,4 @@
 * Day 6 Part 1: (0m00.023s, 0m00.008s, 0m0.012s) | Day 6 Part 2: (0m00.024s, 0m00.016s, 0m0.004s)
 * Day 7 Part 1: (0m00.071s, 0m00.052s, 0m0.020s) | Day 7 Part 2: (0m00.131s, 0m00.128s, 0m0.000s)
 * Day 8 Part 1: (0m00.024s, 0m00.016s, 0m0.008s) | Day 8 Part 2: (solved with human eye)
+* Day 9 Part 1: (0m00.025s, 0m00.016s, 0m0.008s) | Day 9 Part 2: (0m00.049s, 0m00.040s, 0m0.012s)

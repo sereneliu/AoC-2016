@@ -21,20 +21,19 @@ def exchange_chips(bot, end):
     if len(bot_chips[bot]) == 2:
         if sorted(bot_chips[bot]) == end:
             print bot
+        receiving_bots = bot_exchange[bot]
+        if not receiving_bots[0].startswith('output'):
+            bot_chips[receiving_bots[0]].append(min(bot_chips[bot]))
         else:
-            receiving_bots = bot_exchange[bot]
-            if not receiving_bots[0].startswith('output'):
-                bot_chips[receiving_bots[0]].append(min(bot_chips[bot]))
-            else:
-                bot_outputs[receiving_bots[0]].append(min(bot_chips[bot]))
-            if not receiving_bots[1].startswith('output'):
-                bot_chips[receiving_bots[1]].append(max(bot_chips[bot]))
-            else:
-                bot_outputs[receiving_bots[1]].append(max(bot_chips[bot]))
-            bot_chips[bot] = []
-            for receiving_bot in receiving_bots:
-                if not receiving_bot.startswith('output'):
-                    exchange_chips(receiving_bot, end)
+            bot_outputs[receiving_bots[0]].append(min(bot_chips[bot]))
+        if not receiving_bots[1].startswith('output'):
+            bot_chips[receiving_bots[1]].append(max(bot_chips[bot]))
+        else:
+            bot_outputs[receiving_bots[1]].append(max(bot_chips[bot]))
+        bot_chips[bot] = []
+        for receiving_bot in receiving_bots:
+            if not receiving_bot.startswith('output'):
+                exchange_chips(receiving_bot, end)
     if bot_outputs['output 0'] != [] and bot_outputs['output 1'] != [] and bot_outputs['output 2'] != []:
         return bot_outputs['output 0'][0] * bot_outputs['output 1'][0] * bot_outputs['output 2'][0]
 
